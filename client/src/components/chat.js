@@ -14,6 +14,7 @@ export default function Chat() {
         width: "100%",
         wordBreak: "break-word",
         overflow: "hidden",
+        fontSize: "1.6rem",
         display: "flex",
         flexDirection: "column",
         justifyContent: "flex-end",
@@ -56,7 +57,6 @@ export default function Chat() {
             <span
               css={{
                 display: "inline-block",
-                fontWeight: "bold",
                 fontFamily: "Helvetica",
                 width: "65%",
               }}
