@@ -10,20 +10,6 @@ export default function Chat() {
   const [usernameColors, setUsernameColors] = useState({});
   const messages = useChatMessages();
 
-  const getColorForName = ({ displayName, color }) => {
-    if (color) {
-      return color;
-    }
-
-    if (!usernameColors[displayName]) {
-      const userColor = randomcolor();
-      setUsernameColors({ ...usernameColors, [displayName]: userColor });
-      return userColor;
-    }
-
-    return usernameColors[displayName];
-  };
-
   return (
     <ul
       css={{
