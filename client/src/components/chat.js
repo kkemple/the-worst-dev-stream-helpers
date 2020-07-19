@@ -1,13 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import { motion, AnimatePresence } from "framer-motion";
-import randomcolor from "randomcolor";
 
 import useChatMessages from "../hooks/chat-messages";
-import { useState } from "react";
 
 export default function Chat() {
-  const [usernameColors, setUsernameColors] = useState({});
   const messages = useChatMessages();
 
   return (
