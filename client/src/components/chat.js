@@ -6,6 +6,21 @@ import useChatMessages from "../hooks/chat-messages";
 
 export default function Chat() {
   const messages = useChatMessages();
+  const [usernameColors, setUsernameColors] = useState({});
+
+  const getColorForName = ({ displayName, color }) => {
+    if (color) {
+      return color;
+    }
+
+    if (!usernameColors[displayName]) {
+      const userColor = randomcolor();
+      setUsernameColors({ ...usernameColors, [displayName]: userColor });
+      return userColor;
+    }
+
+    return usernameColors[displayName];
+  };
 
   return (
     <ul
@@ -45,9 +60,10 @@ export default function Chat() {
             <span
               css={{
                 paddingRight: "8px",
-                color: "white",
+                color: getColorForName(message),
                 fontFamily: "Helvetica",
                 fontWeight: "bold",
+                textShadow: "1px 1px black",
                 textAlign: "end",
                 width: "35%",
               }}
@@ -58,6 +74,8 @@ export default function Chat() {
               css={{
                 display: "inline-block",
                 fontFamily: "Helvetica",
+                fontWeight: "bold",
+                textShadow: "1px 1px black",
                 width: "65%",
               }}
             >
