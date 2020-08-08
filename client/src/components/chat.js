@@ -1,6 +1,8 @@
 /** @jsx jsx */
+import { useState } from "react";
 import { jsx } from "@emotion/core";
 import { motion, AnimatePresence } from "framer-motion";
+import randomcolor from "randomcolor";
 
 import useChatMessages from "../hooks/chat-messages";
 

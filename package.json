@@ -6,6 +6,7 @@
   "author": "Kurt Kemple <kurtiskemple@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "randomcolor": "^0.6.2"
   }
 }
