@@ -2,15 +2,6 @@ type Query {
   hello: String!
 }
 
-type Stream {
-  id: ID!
-  title: String!
-  description: String!
-  date: String!
-  startTime: String!
-  streamers: [String!]!
-}
-
 type ChatMessage {
   displayName: String!
   message: String!
