@@ -1,6 +1,6 @@
 # TheWorstDev Stream Helpers
 
-> This repository hosts the server and web app used to power layouts for livestreaming.
+> This repository hosts the server and web app used to power layouts for live streaming.
 
 ## Architecture
 
