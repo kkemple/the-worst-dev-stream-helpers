@@ -2,16 +2,6 @@ type Query {
   hello: String!
 }
 
-type Channel {
-  id: ID!
-  title: String!
-  category: String!
-  views: Int!
-  followers: Int!
-  currentStream: Stream
-  currentViewers: Int!
-}
-
 type Stream {
   id: ID!
   title: String!
@@ -26,17 +16,6 @@ type ChatMessage {
   message: String!
   color: String
   emotes: [[String!]!]
-}
-
-type RaidMessage {
-  userName: String!
-  viewers: Int!
-}
-
-type SubscriptionMessage {
-  isGift: Boolean!
-  userName: String!
-  gifterName: String
 }
 
 type Subscription {
