@@ -10,5 +10,5 @@ type ChatMessage {
 }
 
 type Subscription {
-  chat: ChatMessage!
+  chat: ChatMessages!
 }
