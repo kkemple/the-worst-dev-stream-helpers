@@ -5,7 +5,7 @@ type Query {
 type ChatMessage {
   displayName: String!
   message: String!
-  color: String!
+  color: String
   emotes: [[String!]!]
 }
 
