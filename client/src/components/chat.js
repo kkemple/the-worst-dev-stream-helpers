@@ -68,6 +68,9 @@ export default function Chat() {
                 textShadow: "1px 1px black",
                 textAlign: "end",
                 width: "35%",
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+                textOverflow: "ellipsis",
               }}
             >
               {message.displayName}
