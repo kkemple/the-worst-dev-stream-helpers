@@ -66,9 +66,9 @@ export default function useChatMessages() {
             message = parseEmotes(data.chat.emotes, message);
           }
 
-          const last20 = messages.slice(-20);
+          // const last20 = messages.slice(-20);
 
-          setMessages([...last20, { ...data.chat, message }]);
+          setMessages([...messages, { ...data.chat, message }]);
         },
       });
 
