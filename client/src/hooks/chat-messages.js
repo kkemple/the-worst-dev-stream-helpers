@@ -12,6 +12,14 @@ const CHAT_SUBSCRIPTION = gql`
   }
 `;
 
+const BAN_SUBSCRIPTION = gql`
+  subscription Ban {
+    ban {
+      user
+    }
+  }
+`;
+
 const parseEmotes = (emotes, message) => {
   // sort emotes by last
   // replace emotes with images
@@ -48,21 +56,36 @@ export default function useChatMessages() {
   const client = useApolloClient();
 
   useEffect(() => {
-    const observer = client.subscribe({ query: CHAT_SUBSCRIPTION }).subscribe({
-      next: ({ data }) => {
-        let message = data.chat.message;
+    const messageObserver = client
+      .subscribe({ query: CHAT_SUBSCRIPTION })
+      .subscribe({
+        next: ({ data }) => {
+          let message = data.chat.message;
 
-        if (data.chat.emotes) {
-          message = parseEmotes(data.chat.emotes, message);
-        }
+          if (data.chat.emotes) {
+            message = parseEmotes(data.chat.emotes, message);
+          }
 
-        const last20 = messages.slice(-20);
+          const last20 = messages.slice(-20);
 
-        setMessages([...last20, { ...data.chat, message }]);
-      },
-    });
+          setMessages([...last20, { ...data.chat, message }]);
+        },
+      });
 
-    return () => observer.unsubscribe();
+    const banObserver = client
+      .subscribe({ query: BAN_SUBSCRIPTION })
+      .subscribe({
+        next: ({ data }) => {
+          setMessages(
+            messages.filter((message) => message.displayName === data.ban.user)
+          );
+        },
+      });
+
+    return () => {
+      messageObserver.unsubscribe();
+      banObserver.unsubscribe();
+    };
   }, [messages, client]);
 
   return messages;

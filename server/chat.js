@@ -1,6 +1,7 @@
 const tmi = require("tmi.js");
 
 const CHAT_MESSAGE = "CHAT_MESSAGE";
+const BAN = "BAN";
 
 const createChatClient = (pubsub) => {
   const client = new tmi.Client({
@@ -16,6 +17,10 @@ const createChatClient = (pubsub) => {
   });
 
   client.connect();
+
+  client.on("ban", (_, username) => {
+    pubsub.publish(BAN, { user: username });
+  });
 
   client.on("message", (_, tags, message, self) => {
     if (self) return;

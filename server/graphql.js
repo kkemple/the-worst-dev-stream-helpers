@@ -1,7 +1,7 @@
-const { gql } = require("apollo-server-express");
 const fs = require("fs");
 
 const CHAT_MESSAGE = "CHAT_MESSAGE";
+const BAN = "BAN";
 
 const typeDefs = fs.readFileSync("./schema.graphql", "utf8").toString();
 
@@ -13,6 +13,9 @@ const createResolvers = (pubsub) => {
     Subscription: {
       chat: {
         subscribe: () => pubsub.asyncIterator([CHAT_MESSAGE]),
+      },
+      ban: {
+        subscribe: () => pubsub.asyncIterator([BAN]),
       },
     },
   };
